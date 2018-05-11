@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+   <link rel="stylesheet" type="text/css" href="{% static "farmacia/css/materialize.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "farmacia/css/style.css" %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Russo+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Russo+One" rel="stylesheet">
+
+
+
+<link rel="icon" href="{% static "img/pildoras-icon.png" %}">
+
+</head>
+<body>
+
+{% block header %}
+    <nav>
+    <div class="nav-wrapper blue" >
+    <a href="{% url 'inicio' %}"><img class="responsive-img" src="{% static 'img/logo_provisional.png' %}">   </a>
+      <a href="{% url 'inicio' %}" class="brand-logo left">Farmacias Hoffman</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li></li>
+        <li><a href="{% url 'productos_all' %}">Productos</a></li>
+
+        <li><a href="{% url 'contacto' %}">Contacto</a></li>
+        <li><a href="{% url 'promocion' %}">Promociones</a></li>
+        <li><a href="{% url 'registro' %}">Registrarse</a></li>
+        <li><a href="{% url 'sesion' %}">Iniciar Sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+{% endblock %}
+
+
+{%  block contenido %}
+    <h3>Este es el contenido</h3>
+{%  endblock %}
+
+
+
+{%  block footer %}
+    <footer class="page-footer light blue darken-2" style="position:relative;bottom:0;left:0;width:100%;">
+  <div class="footer-copyright">
+    <div class="container">
+      <a class="grey-text text-lighten-4 right" href="http://proteco.mx/cursos">
+      © PROTECO - Generación 36
+      </a>
+      Jiménez Vega Alex Fernando -17
+      <br>
+      Pato Barrero Olguin - 10 <br>
+      Lobato Pablo Alberto - 14 <br>
+
+    </div>
+  </div>
+</footer>
+{%  endblock %}
+
+
+
+{% block script %}
+    <script src="{% static 'farmacia/js/jquery.js' %}"></script>
+    <script src="{% static 'farmacia/js/materialize.js' %}"></script>
+    <script type="text/javascript" src="{% static 'farmacia/js/apps.js' %}"></script>
+{% endblock %}
+
+</body>
+</html>

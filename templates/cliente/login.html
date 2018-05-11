@@ -1,0 +1,35 @@
+{% extends 'farmacia/cuerpo.html' %}
+{% block contenido %}
+    <div class="container">
+        <div class="row">
+            <div class="col s0 m2">
+
+            </div>
+            <div class="col s12 m8">
+                <h1>Inicio Sesion</h1>
+                <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Aceptar</button>
+        <a href="{% url 'password_reset' %}">Olvide mi contraseña</a>
+   {% if messages %}
+       <ul class="messages">
+            {% for message in messages %}
+             <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    </form>
+            </div>
+            <div class="col s0 m2">
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <br>
+    <br>
+{% endblock %}

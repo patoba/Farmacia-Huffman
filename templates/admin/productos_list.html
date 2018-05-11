@@ -1,0 +1,42 @@
+{% extends 'farmacia/cuerpo.html' %}
+{% block contenido %}
+{% if productos %}
+    <table>
+    <thead>
+        <tr>
+            <td>Folio</td>
+            <td>Nombre</td>
+            <td>Provedor</td>
+            <td>Descripcion</td>
+            <td>Cantidad</td>
+            <td>Clasificacion</td>
+            <td>Precio</td>
+            <td>Descuento</td>
+            <td>Accion</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for producto in productos %}
+            <tr>
+                <td>{{ producto.folio }}</td>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.provedor }}</td>
+                <td>{{ producto.descripcion }}</td>
+                <td>{{ producto.cantidad }}</td>
+                <td>{{ producto.clasificacion }}</td>
+                <td>{{ producto.precio }}</td>
+                <td>{{ producto.descuento }}</td>
+                <td>
+                    <a href="{% url 'producto_cambiar' folio=producto.folio %}">Editar</a>
+                    <a href="{% url 'producto_eliminar' folio=producto.folio %}">Borrar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    {% else %}
+    <p>No hay registros</p>
+    {% endif %}
+    <a href="{% url 'productos' %}">Agregar producto</a>
+{% endblock %}

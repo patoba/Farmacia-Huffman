@@ -1,0 +1,32 @@
+{% extends 'farmacia/cuerpo.html' %}
+{% block contenido %}
+    <form method="POST">
+        {% csrf_token %}
+        {% if factura %}
+    <table>
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Fecha</td>
+            <td>Monto</td>
+            <td>Persona</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for factura in facturas %}
+            <tr>
+                <td>{{ factura.folio }}</td>
+                <td>{{ factura.fecha }}</td>
+                <td>{{ factura.monto }}</td>
+                <td>{{ factura.persona }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    {% else %}
+    <p>No hay registros</p>
+    {% endif %}
+    <button type="submit">Guardar</button>
+    </form>
+{% endblock %}

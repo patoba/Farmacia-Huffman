@@ -1,0 +1,40 @@
+ body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-image: url(184417-farmacia-castelo-fondo.jpg);
+  }
+main {
+    flex: 1 0 auto;
+}
+
+#logoxxo{
+	margin-top: 5px;
+	margin-left: 5px;
+	height: 55px;
+}
+     
+
+ .parallax-container {
+      height: 300px;
+    }
+
+i{
+  color: black;
+}
+
+.titulo{
+  font-family: 'Fjalla One', sans-serif;
+}
+
+.untitulo{
+  font-family: 'Lobster', cursive;
+}
+
+.brand-logo{
+  font-family: 'Great Vibes', cursive;
+}
+
+.contacto{
+  font-family: 'Fjalla One', sans-serif;
+}

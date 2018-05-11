@@ -1,0 +1,9 @@
+{% extends 'farmacia/cuerpo.html' %}
+{% block contenido %}
+    <form method="post">
+        {% csrf_token %}
+        <h3>Desea eliminar el registro de {{ producto.id }}</h3>
+        <button type="submit">Si, eliminar</button>
+        <a href="{% url 'productos_all' %}">Cancelar</a>
+    </form>
+{% endblock %}

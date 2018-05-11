@@ -1,0 +1,29 @@
+{% extends 'farmacia/cuerpo.html' %}
+{% block contenido %}
+    <div class="container">
+        <div class="row">
+            <div class="col s0 m2">
+
+            </div>
+        <h1>Registrate</h1>
+            <div class="col s12 m8">
+                <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <center><button type="submit">Guardar</button></center>
+   {% if messages %}
+       <ul class="messages">
+            {% for message in messages %}
+             <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    </form>
+            </div>
+            <div class="col s0 m2">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

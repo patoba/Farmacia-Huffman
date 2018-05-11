@@ -1,0 +1,28 @@
+{% extends 'farmacia/cuerpo.html' %}
+{% block contenido %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            Nombre
+            {{ form.nombre }}
+        </p>
+        <p>
+            Precio
+            {{ form.precio }}
+        </p>
+        <p>
+            Provedor
+            {{ form.provedor }}
+        </p>
+        <p>
+            Descuento
+            {{ form.descuento }}
+        </p>
+        <p>
+            Cantidad
+            {{ form.cantidad }}
+
+        </p>
+        <button type="submit">Guardar</button>
+    </form>
+{% endblock %}
