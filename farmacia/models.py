@@ -22,7 +22,7 @@ class Producto(models.Model):
     provedor=models.CharField(max_length=12)
     descripcion=models.TextField()
     cantidad = models.IntegerField()
-    clasificacion=models.IntegerField()
+    clasificacion=models.CharField(max_length=12)
     precio = models.FloatField()
     descuento = models.IntegerField(default=0)
     factura = models.ForeignKey(Factura, null=True, blank=True, on_delete=models.CASCADE)
