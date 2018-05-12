@@ -14,7 +14,6 @@ class Usuario(models.Model):
 class Factura(models.Model):
     fechaEmision=models.DateField(default=timezone.now)
     usuario=models.ForeignKey(Usuario,null=True,blank=True,on_delete=models.CASCADE)
-    monto=models.FloatField()
 
 class Producto(models.Model):
     folio=models.CharField(max_length=12,primary_key=True)
