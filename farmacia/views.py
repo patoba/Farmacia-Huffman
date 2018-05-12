@@ -82,6 +82,8 @@ def registro(request):
                 messages.add_message(request, messages.INFO, 'El nombre de usuario ya existe')
             else:
                 form.save()
+                factura = Factura(usuario=Usuario.objects.get(username=nombre))
+                factura.save()
                 return redirect('inicio')
     else:
         form = UsuarioForm()
