@@ -10,14 +10,14 @@ class Usuario(models.Model):
     telefono=models.CharField(max_length=12)
     admin=models.BooleanField(default=False)
     def __str__(self):
-        return "%s" % (self.username)
+        return "%d - %s" % (self.id, self.username)
 
 # Create your models here. Va
 class Factura(models.Model):
     fechaEmision=models.DateField(default=timezone.now)
     usuario=models.ForeignKey(Usuario,null=True,blank=True,on_delete=models.CASCADE)
     def __str__(self):
-        return "%s asosicada a %s" % (self.fechaEmision,self.usuario)
+        return "%d - %s asosicada a %s" % (self.id,self.fechaEmision,self.usuario)
 
 class Producto(models.Model):
     folio=models.CharField(max_length=12,primary_key=True)

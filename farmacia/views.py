@@ -23,6 +23,8 @@ def miCuenta(request):
         contexto={'productos':producto}
         return render(request, 'admin/productos_list.html', contexto)
     contexto={'usuario':usuario}
+    facturaza=Factura.objects.filter(usuario=Usuario.objects.get(username='pato')).order_by('-id')[:1].get()
+    producto={'producto':Producto.objects.filter(factura=facturaza)}
     return render(request,'cliente/miCuenta.hrml',contexto)
 
 def productos(request):
