@@ -1,0 +1,39 @@
+{% extends 'farmacia/cuerpo.html' %}
+{% block contenido %}
+{% if productos %}
+{% load static %}
+<div class="container">
+  <br><br><br>
+  <div class="row">
+
+  {% for producto in productos %}
+     <div class="col s12 m3 card medium">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" height="200" width="200" src="{{ producto.url }}">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator light-blue-text text-lighten-1">{{ producto.nombre }}<i class="material-icons right">more_vert</i></span>
+          <p>${{ producto.precio }}</p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title light-blue-text text-lighten-1">{{ producto.nombre }}<i class="material-icons right">close</i></span>
+          <p>{{ producto.descripcion }}</p>
+          <p>Provedor: {{ producto.provedor }}</p>
+          <p>Contamos con {{ producto.cantidad }}</p>
+          {% if producto.cantidad != 0%}
+            {% if producto.descuento == 0 %}
+              <p>Precio: ${{ producto.precio }}</p>
+            {% else %}
+              <p>Precio Original: ${{ producto.precio }}</p>
+              <p>Descuento: ${{ producto.descuento }}</p>
+              <p>Total: ${{ producto.total }}</p>
+            {% endif %}
+          {% endif %}
+          <a class="waves-effect waves-light btn">Comprar</a>
+        </div>
+      </div>
+{% endfor %}
+  </div>
+</div>
+{% endif %}
+{% endblock %}

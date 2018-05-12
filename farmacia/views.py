@@ -25,11 +25,10 @@ def miCuenta(request):
         producto=Producto.objects.all()
         contexto={'productos':producto}
         return render(request, 'admin/productos_list.html', contexto)
-    facturaza=Factura.objects.filter(usuario=Usuario.objects.get(username='pato')).order_by('-id')[:1].get()
+    facturaza=Factura.objects.filter(usuario=Usuario.objects.get(username=logeo)).order_by('-id')[:1].get()
     productos=Producto.objects.filter(factura=facturaza)
-    precios=[]
     for producto in productos:
-        producto.total=producto.precio*(100-producto.descuento)*producto.cantidad/100
+        producto.total=producto.precio*(100-producto.descuento)/100
     contexto={'usuarios':usuario,'productos':productos}
     return render(request,'cliente/miCuenta.html',contexto)
 
@@ -52,6 +51,8 @@ def productos_all(request):
             return render(request, 'admin/productos_list.html', contexto)
     return render(request, 'cliente/mensaje.html', {'mensaje': 'Error no haz iniciado sesion'})
 
+def productos(request):
+    return render(request,'farmacia/producto_card.html',{'productos':Producto.objects.filter(factura=None).order_by('folio')})
 
 def producto_cambiar(request, folio):
     producto=Producto.objects.get(folio=folio)
