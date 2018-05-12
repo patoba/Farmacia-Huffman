@@ -30,5 +30,6 @@ class Producto(models.Model):
     precio = models.FloatField()
     descuento = models.IntegerField(default=0)
     factura = models.ForeignKey(Factura, null=True, blank=True, on_delete=models.CASCADE)
+    total=models.IntegerField(default=0)
     def __str__(self):
         return "%s - %s -> %s" % (self.folio,self.nombre,self.factura)

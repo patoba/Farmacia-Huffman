@@ -10,6 +10,9 @@ from django.core.mail import EmailMessage
 
 logeo=0
 
+def importeParcial(producto):
+    return producto.precio*producto.descuento*producto.cantidad/100
+
 def index(request):
     return render(request,'farmacia/index.html')
 
@@ -22,10 +25,13 @@ def miCuenta(request):
         producto=Producto.objects.all()
         contexto={'productos':producto}
         return render(request, 'admin/productos_list.html', contexto)
-    contexto={'usuario':usuario}
     facturaza=Factura.objects.filter(usuario=Usuario.objects.get(username='pato')).order_by('-id')[:1].get()
-    producto={'producto':Producto.objects.filter(factura=facturaza)}
-    return render(request,'cliente/miCuenta.hrml',contexto)
+    productos=Producto.objects.filter(factura=facturaza)
+    precios=[]
+    for producto in productos:
+        producto.total=producto.precio*(100-producto.descuento)*producto.cantidad/100
+    contexto={'usuarios':usuario,'productos':productos}
+    return render(request,'cliente/miCuenta.html',contexto)
 
 def productos(request):
     if request.method =='POST':
