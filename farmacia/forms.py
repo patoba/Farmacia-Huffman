@@ -7,7 +7,7 @@ from .models import Producto, Factura
 class ProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
-        fields = ['folio', 'nombre','provedor','descripcion','cantidad','clasificacion','precio','descuento','factura',]
+        fields = ['folio', 'nombre','provedor','descripcion','cantidad','clasificacion','precio','descuento','factura']
         labels={
             'folio': 'Folio',
             'nombre':'Nombre',
@@ -23,22 +23,21 @@ class ProductoForm(forms.ModelForm):
 class FacturaForm(forms.ModelForm):
     class Meta:
         model=Factura
-        fields=['id','fechaEmision','monto','usuario']
+        fields=['id','fechaEmision','usuario']
         labels={
             'id':'ID',
             'fechaEmision': 'Fecha de Emision',
-            'monto':'Monto',
             'usuario':'Cliente',
         }
 
 class UsuarioForm(forms.ModelForm):
     class Meta:
         model=Usuario
-        fields=['password','username','correo','rfc','nombre','telefono']
+        fields=['username','password','correo','rfc','nombre','telefono']
         labels={
+            'username':'Nombre de Usuario',
             'password':'Contraseña',
-            'username':'Nombre de usuario',
-            'correo':'correo',
+            'correo':'Correo Electronico',
             'rfc':'RFC',
             'nombre':'Nombre',
             'telefono':'Telefono',
@@ -47,7 +46,7 @@ class UsuarioForm(forms.ModelForm):
 class LoginForm(forms.ModelForm):
     class Meta:
         model=Usuario
-        fields=['password','username']
+        fields=['username','password']
         labels={
             'username': 'Usuario',
             'password':'Contraseña',

@@ -1,0 +1,14 @@
+{% extends 'farmacia/cuerpo.html' %}
+{% block contenido %}
+  <div class="container">
+    <div class="row">
+      <div class="col s6">
+        <a href="{% url 'registro' %}">Registrate</a>
+      </div>
+      <div class="col s6">
+        <a href="{% url 'sesion' %}">Inicia Sesion</a>
+      </div>
+    </div>
+  </div>
+<br>
+{% endblock %}

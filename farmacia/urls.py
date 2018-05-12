@@ -18,6 +18,7 @@ urlpatterns = [
     path('crearUsuario',views.registro,name="crear_usuario"),
     path('contacto',views.contacto,name="contacto"),
     path('promocion',views.promocion,name="promocion"),
+    path('miCuenta',views.miCuenta,name="micuenta"),
     re_path(r'^reset/password_reset', password_reset,
         {'template_name': 'registration/password_reset_form.html',
          'email_template_name': 'registration/password_reset_email.html'},

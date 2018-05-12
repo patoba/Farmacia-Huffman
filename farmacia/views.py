@@ -13,6 +13,18 @@ logeo=0
 def index(request):
     return render(request,'farmacia/index.html')
 
+def miCuenta(request):
+    global logeo
+    if logeo == 0:
+        return render(request,'farmacia/miCuenta.html')
+    usuario=Usuario.objects.get(username=logeo)
+    if usuario.admin:
+        producto=Producto.objects.all()
+        contexto={'productos':producto}
+        return render(request, 'admin/productos_list.html', contexto)
+    contexto={'usuario':usuario}
+    return render(request,'cliente/miCuenta.hrml',contexto)
+
 def productos(request):
     if request.method =='POST':
         form=ProductoForm(request.POST)
@@ -35,7 +47,7 @@ def productos_all(request):
 
 def producto_cambiar(request, folio):
     producto=Producto.objects.get(folio=folio)
-    if request.method=='GET':
+    if request.method == 'GET':
         form=ProductoForm(instance=producto)
     else:
         form=ProductoForm(request.POST,instance=producto)
@@ -70,7 +82,7 @@ def registro(request):
                 messages.add_message(request, messages.INFO, 'El nombre de usuario ya existe')
             else:
                 form.save()
-                return redirect('productos_all')
+                return redirect('inicio')
     else:
         form = UsuarioForm()
     return render(request, 'cliente/crearUsuario.html', {'form': form})
