@@ -20,13 +20,13 @@ class Factura(models.Model):
         return "%d - %s asosicada a %s" % (self.id,self.fechaEmision,self.usuario)
 
 class Producto(models.Model):
-    folio=models.CharField(max_length=12,primary_key=True)
-    url=models.CharField(max_length=40)
-    nombre=models.CharField(max_length= 12)
-    provedor=models.CharField(max_length=12)
+    folio=models.CharField(max_length=4,primary_key=True)
+    url=models.CharField(max_length=100)
+    nombre=models.CharField(max_length= 100)
+    provedor=models.CharField(max_length=40)
     descripcion=models.TextField()
     cantidad = models.IntegerField()
-    clasificacion=models.CharField(max_length=12)
+    clasificacion=models.CharField(max_length=40)
     precio = models.FloatField()
     descuento = models.IntegerField(default=0)
     factura = models.ForeignKey(Factura, null=True, blank=True, on_delete=models.CASCADE)
