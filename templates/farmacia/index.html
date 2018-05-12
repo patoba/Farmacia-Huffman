@@ -5,7 +5,7 @@
 {% block contenido %}
 
 <div class="parallax-container" >
-      <div class="parallax"><img src="{% static "farmacia/img/parall_index_1.jpg" %}" ></div>
+      <div class="parallax"><img src="{% static "farmacia/img/parall_index_1.jpg"%}" height="100%" ></div>
     </div>
     <div class="section  indigo lighten-5">
       <div class="row container">
@@ -15,21 +15,21 @@
 
 
 <div class="row">
-	<center><h2 style="font-family: 'Russo One', sans-serif;">Conoce nuestros productos!!</h2></center>
+	<center ><h2 style="font-family: 'Russo One', sans-serif;"> <a href="{% url 'productos_all' %}"> Conoce nuestros productos!!</a></h2></center>
 </div>
 
 <div class="carousel carousel-slider center">
     <div class="carousel-fixed-item center">
-      <a class="btn waves-effect white grey-text darken-text-2">Descubre en nuestra Tienda</a>
+      <a href="{% url 'productos_all' %}"  class="btn waves-effect white grey-text darken-text-2" >Descubre en nuestra Tienda</a>
     </div>
     <div class="carousel-item amber white-text" href="#one!">
     {% load static %}
-	<img src="{% static 'img/carousel_index_3.jpg' %}" alt="">
+	<img src="{% static "img/carousel_index_3.jpg" %}" height="100%" alt="">
     </div>
     <div class="carousel-item  blue-grey lighten-2 white-text" href="#two!">
       		<img src="{% static 'img/carousel_index_1.jpg' %}" alt="">
     </div>
-    <div class="carousel-item  teal lighten-3 white-text" href="#three!">
+    <div class="carousel-item  teal lighten-3 white-text" height="100%" href="#three!">
       		<img src="{% static 'img/carousel_index_0.png' %}" alt="">
 
     </div>
