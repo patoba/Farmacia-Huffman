@@ -1,11 +1,27 @@
 {% extends 'farmacia/cuerpo.html' %}
-<div class="nav-wrapper yellow" >
-<ul id="nav-mobile" class="center hide-on-med-and-down">
-    <li></li>
-    <li><a href="{% url 'productosAdmin' %}">Adimistrar Productos</a></li>
-    <li><a href="{% url 'ventasTotales' %}">Ventas Totales</a></li>
-    <li><a href="{% url 'ventasParciales' %}">Ventas Individuales</a></li>
-  </ul>
-</div>
+{% load staticfiles %}
+{% block header %}
+<nav class="nav-extended">
+  <div class="nav-wrapper blue" >
+  <a href="{% url 'inicio' %}"><img class="responsive-img" src="{% static 'img/logo_provisional.png' %}">   </a>
+    <a href="{% url 'inicio' %}" class="brand-logo left">Farmacias Hoffman</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li></li>
+      <li><a href="{% url 'productos' %}">Productos</a></li>
+      <li><a href="{% url 'micuenta' %}">Mi cuenta</a></li>
+      <li><a href="{% url 'contacto' %}">Contacto</a></li>
+      <li><a href="{% url 'promocion' %}">Promociones</a></li>
+    </ul>
+  </div>
+    <div class="nav-content">
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a href="{% url 'adminInicio' %}">Inicio</a></li>
+        <li class="tab"><a href="{% url 'adminCarrito' %}">Mi carrito</a></li>
+        <li class="tab"><a href="{% url 'productos_all' %}">Modificar Productos</a></li>
+        <li class="tab"><a href="{% url 'ventas_totales' %}">Facturas</a></li>
+      </ul>
+    </div>
+  </nav>
+{% endblock %}
 {% block contenido %}
 {% endblock %}

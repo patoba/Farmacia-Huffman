@@ -23,9 +23,12 @@ def miCuenta(request):
         return render(request,'farmacia/miCuenta.html')
     usuario=Usuario.objects.get(username=logeo)
     if usuario.admin:
-        producto=Producto.objects.all().exclude(factura__isnull=False)
+        producto=Producto.objects.order_by('folio')
         contexto={'productos':producto}
         return render(request, 'admin/productos_list.html', contexto)
+        mensaje=Producto.objects.all()
+        contexto={'mensaje':mensaje}
+        return render(request, 'admin/miCuenta.html', contexto)
     facturaza=Factura.objects.filter(usuario=Usuario.objects.get(username=logeo)).order_by('-id')[:1].get()
     productos=ProductoIndividual.objects.filter(factura=facturaza)
     for indice in range(productos.count()):
@@ -33,6 +36,31 @@ def miCuenta(request):
         productos[indice].save()
     contexto={'usuarios':usuario,'productos':productos}
     return render(request,'cliente/miCuenta.html',contexto)
+
+def admin_carrito(request):
+    if logeo!=0:
+        usuario=Usuario.objects.get(username=logeo)
+        if usuario.admin:
+            facturaza=Factura.objects.filter(usuario=Usuario.objects.get(username=logeo)).order_by('-id')[:1].get()
+            productos=ProductoIndividual.objects.filter(factura=facturaza)
+            for indice in range(productos.count()):
+                productos[indice].total=productos[indice].precio*(100-productos[indice].descuento)/100
+                productos[indice].save()
+            contexto={'usuarios':usuario,'productos':productos}
+            return render(request,'admin/carrito.html',contexto)
+        return render(request, 'cliente/mensaje.html', {'mensaje': 'Error no eres administrador'})
+    return render(request, 'cliente/mensaje.html', {'mensaje': 'Error no haz iniciado sesion'})
+
+
+def admin_inicio(request):
+    if logeo!=0:
+        usuario=Usuario.objects.get(username=logeo)
+        if usuario.admin:
+            mensaje=Producto.objects.all()
+            contexto={'mensaje':mensaje}
+            return render(request, 'admin/miCuenta.html', contexto)
+        return render(request, 'cliente/mensaje.html', {'mensaje': 'Error no eres administrador'})
+    return render(request, 'cliente/mensaje.html', {'mensaje': 'Error no haz iniciado sesion'})
 
 def quitar_carrito(request,Id):
     producto=ProductoIndividual.objects.get(id=Id)
@@ -55,9 +83,10 @@ def productos_all(request):
     if logeo!=0:
         usuario=Usuario.objects.get(username=logeo)
         if usuario.admin:
-            producto=Producto.objects.all()
+            producto=Producto.objects.order_by('folio')
             contexto={'productos':producto}
             return render(request, 'admin/productos_list.html', contexto)
+        return render(request, 'cliente/mensaje.html', {'mensaje': 'Error no haz iniciado sesion'})
     return render(request, 'cliente/mensaje.html', {'mensaje': 'Error no haz iniciado sesion'})
 
 def productos(request):

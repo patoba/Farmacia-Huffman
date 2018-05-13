@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col s0 m1">
+
+        </div>
+        <div class="col s12 m10">
+          <h3>Carrito de compras</h3>
+            <form method="POST">
+    {% csrf_token %}
+    {% if productos %}
+        <table>
+        <thead>
+            <tr>
+                <td>Nombre</td>
+                <td>Precio</td>
+                <td>Descuento</td>
+                <td>Costo</td>
+                <td>Accion</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+                <tr>
+                    <td>{{ producto.nombre }}</td>
+                    <td>{{ producto.precio }}</td>
+                    <td>{{ producto.descuento }}%</td>
+                    <td>{{ producto.total }}</td>
+                    <td>
+                        <a href="{% url 'quitar_carrito' Id=producto.id %}">Borrar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+        {% else %}
+        <p>No hay registros</p>
+        {% endif %}
+    <button type="submit">Comprar</button>
+</form>
+        </div>
+        <div class="col s0 m1">
+
+        </div>
+    </div>
+
+</div>
+
+
+<br>
+<br>
