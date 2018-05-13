@@ -10,41 +10,39 @@
     <div class="section  indigo lighten-5">
       <div class="row container">
 
-
-
-
-
 <div class="row">
-	<center ><h2 style="font-family: 'Russo One', sans-serif;"> <a href="{% url 'productos_all' %}"> Conoce nuestros productos!!</a></h2></center>
+  <center ><h2 style="font-family: 'Russo One', sans-serif;"> <a href="{% url 'productos_all' %}"> Conoce nuestros productos!!</a></h2></center>
 </div>
-
-<div class="carousel carousel-slider center">
-    <div class="carousel-fixed-item center">
-      <a href="{% url 'productos_all' %}"  class="btn waves-effect white grey-text darken-text-2" >Descubre en nuestra Tienda</a>
-    </div>
-    <div class="carousel-item amber white-text" href="#one!">
-    {% load static %}
-	<img src="{% static "img/carousel_index_3.jpg" %}" height="100%" alt="">
-    </div>
-    <div class="carousel-item  blue-grey lighten-2 white-text" href="#two!">
-      		<img src="{% static 'img/carousel_index_1.jpg' %}" alt="">
-    </div>
-    <div class="carousel-item  teal lighten-3 white-text" height="100%" href="#three!">
-      		<img src="{% static 'img/carousel_index_0.png' %}" alt="">
-
-    </div>
-    <div class="carousel-item blue white-text" href="#four!">
-     		<img src="{% static 'img/carousel_index_2.jpg' %}" alt="">
-
-    </div>
-  </div>
-
-
-
-
-<div><br><br></div>
 <br>
 
+
+  <div class="slider">
+    <ul class="slides fixed">
+      <li> 
+           <img  src="{% static "farmacia/img/carousel_index_3.jpg" %}" alt="">
+
+      </li>
+
+
+      <li>
+       <img src="{% static 'farmacia/img/carousel_index_1.jpg' %}" width="100%"  height ="100%" alt="">
+        
+      </li>
+
+
+      <li>
+        <img src="{% static 'farmacia/img/carousel_index_0.png' %}" width="100%" alt="">
+       
+      </li>
+
+
+      <li>
+        <img src="{% static 'farmacia/img/carousel_index_2.jpg' %}" width="100%" alt="">
+       
+      </li>
+    </ul>
+  </div>
+      
 
 
 
