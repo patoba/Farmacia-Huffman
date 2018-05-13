@@ -13,7 +13,7 @@
 
 
 
-<link rel="icon" href="{% static "img/pildoras-icon.png" %}">
+<link rel="icon" href="{% static "farmacia/img/pildoras-icon.png" %}">
 
 </head>
 <body>
@@ -21,7 +21,7 @@
 {% block header %}
     <nav>
     <div class="nav-wrapper blue" >
-    <a href="{% url 'inicio' %}"><img class="responsive-img" src="{% static 'img/logo_provisional.png' %}">   </a>
+    <a href="{% url 'inicio' %}"><img class="responsive-img" src="{% static 'farmacia/img/logo_provisional.png' %}">   </a>
       <a href="{% url 'inicio' %}" class="brand-logo left">Farmacias Hoffman</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li></li>
@@ -33,10 +33,8 @@
     </div>
   </nav>
 {% endblock %}
-{% csrf_token %}
-{% if usuario %}
-{{ usuario }}<a href="{% url 'cerrarSesion' %}">Cerrar Sesion</a>
-{% endif %}
+
+
 {%  block contenido %}
     <h3>Este es el contenido</h3>
 {%  endblock %}

@@ -1,11 +1,13 @@
 $(document).ready(function(){
     $('.sidenav').sidenav();
     $('.parallax').parallax();
-      $('.carousel').carousel();
-      $('.tooltipped').tooltip({delay: 50});
+    $('.carousel').carousel();
+    $('.materialboxed').materialbox();
+    $('.slider').slider();
   });
+
 Materialize.updateTextFields();
 
 $(document).ready(function(){
     $('.carousel').carousel();
-  });
+ });
