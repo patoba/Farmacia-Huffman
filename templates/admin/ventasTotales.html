@@ -1,4 +1,27 @@
 {% extends 'admin/miCuenta.html' %}
 {% block contenido %}
-
+{% if form %}
+    <table>
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Fecha de Emision</td>
+            <td>Monto</td>
+            <td>Usuario</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for fors in form %}
+            <tr>
+                <td>{{ fors.id }}</td>
+                <td>{{ fors.fechaEmision }}</td>
+                <td>{{ fors.monto }}</td>
+                <td>{{ fors.usuario.username }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    {% else %}
+    <p>No hay registros</p>
+    {% endif %}
 {% endblock %}

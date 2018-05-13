@@ -16,6 +16,7 @@ class Usuario(models.Model):
 class Factura(models.Model):
     fechaEmision=models.DateField(default=timezone.now)
     usuario=models.ForeignKey(Usuario,null=True,blank=True,on_delete=models.CASCADE)
+    monto=models.FloatField(default=0)
     def __str__(self):
         return "%d - %s asosicada a %s" % (self.id,self.fechaEmision,self.usuario)
 

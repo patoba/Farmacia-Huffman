@@ -7,9 +7,10 @@ from .models import Producto, Factura
 class ProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
-        fields = ['folio', 'nombre','provedor','descripcion','cantidad','clasificacion','precio','descuento']
+        fields = ['folio','url', 'nombre','provedor','descripcion','cantidad','clasificacion','precio','descuento']
         labels={
             'folio': 'Folio',
+            'url':'URL',
             'nombre':'Nombre',
             'provedor':'Provedor',
             'descripcion': 'Descricpion Producto',
@@ -30,6 +31,7 @@ class FacturaForm(forms.ModelForm):
         }
 
 class UsuarioForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model=Usuario
         fields=['username','password','correo','rfc','nombre','telefono']
@@ -43,6 +45,7 @@ class UsuarioForm(forms.ModelForm):
         }
 
 class LoginForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model=Usuario
         fields=['username','password']

@@ -6,8 +6,8 @@
         </div>
 
         <div class="col s10">
-                <h1>Error el usuario no es administrador</h1>
-
+            {% csrf_token %}
+                <center><h2>{{ mensaje }}</h2></center>
         </div>
         <div class="col s1">
         </div>
