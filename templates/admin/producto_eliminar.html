@@ -2,7 +2,7 @@
 {% block contenido %}
     <form method="post">
         {% csrf_token %}
-        <h3>Desea eliminar el registro de {{ producto.id }}</h3>
+        <h3>Desea eliminar el registro de {{ producto.nombre }}</h3>
         <button type="submit">Si, eliminar</button>
         <a href="{% url 'productos_all' %}">Cancelar</a>
     </form>

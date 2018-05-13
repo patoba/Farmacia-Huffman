@@ -22,13 +22,13 @@ def miCuenta(request):
         return render(request,'farmacia/miCuenta.html')
     usuario=Usuario.objects.get(username=logeo)
     if usuario.admin:
-        producto=Producto.objects.all()
+        producto=Producto.objects.all().exclude(factura__isnull=False)
         contexto={'productos':producto}
         return render(request, 'admin/productos_list.html', contexto)
     facturaza=Factura.objects.filter(usuario=Usuario.objects.get(username=logeo)).order_by('-id')[:1].get()
     productos=Producto.objects.filter(factura=facturaza)
-    for producto in productos:
-        producto.total=producto.precio*(100-producto.descuento)/100
+    for indice in range(productos.size()):
+        productos[indice].total=productos[indice].precio*(100-productos[indice].descuento)/100
     contexto={'usuarios':usuario,'productos':productos}
     return render(request,'cliente/miCuenta.html',contexto)
 
@@ -69,6 +69,16 @@ def producto_cambiar(request, folio):
             form.save()
         return redirect('productos_all')
     return render(request, 'admin/producto_form.html', {'form':form})
+
+def ventas_totales(request):
+    if esAdmin():
+        form=Factura.objects.all();
+        render(request,'admin/ventasTotales.html')
+
+def ventas_parciales(request):
+    if esAdmin():
+        form=Factura.objects.all();
+        render(request,'admin/ventasTotales.html')
 
 def producto_eliminar(request,folio):
     producto=Producto.objects.get(folio=folio)

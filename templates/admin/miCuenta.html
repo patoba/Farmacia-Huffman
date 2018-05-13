@@ -1,0 +1,11 @@
+{% extends 'farmacia/cuerpo.html' %}
+<div class="nav-wrapper yellow" >
+<ul id="nav-mobile" class="center hide-on-med-and-down">
+    <li></li>
+    <li><a href="{% url 'productosAdmin' %}">Adimistrar Productos</a></li>
+    <li><a href="{% url 'ventasTotales' %}">Ventas Totales</a></li>
+    <li><a href="{% url 'ventasParciales' %}">Ventas Individuales</a></li>
+  </ul>
+</div>
+{% block contenido %}
+{% endblock %}
