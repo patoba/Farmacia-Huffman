@@ -11,14 +11,41 @@ main {
 .slider {
   width: 100%;
   margin: 0 auto;
-  transition-duration :20;
+
+}
+
+#im1{
+  background-color: #FFC600;
+}
+
+#im2{
+  background-color: #9EE3E5 ;
+}
+
+#im3{
+  background-color: #7DAEC2;
+}
+
+#im4{
+  background-color: #2B48EB;
+}
+
+#conoce{
+  color: #121A2B;
+  text-shadow: 8px 8px 10px #B655D3; 
+  text-decoration: underline;
+}
+
+.section{
+  background-image: url(f2.jpg);
 }
 
 .slider .slides li img {
     background-size:  100% auto;
-   
+    width: 100%;
     background-repeat: no-repeat;
-   
+    height: 100%;
+
 }
 
 .slides{

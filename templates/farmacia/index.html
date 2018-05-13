@@ -7,36 +7,36 @@
 <div class="parallax-container" >
       <div class="parallax"><img src="{% static "farmacia/img/parall_index_1.jpg"%}" height="100%" ></div>
     </div>
-    <div class="section  indigo lighten-5">
+    <div class="section ">
       <div class="row container">
 
 <div class="row">
-  <center ><h2 style="font-family: 'Russo One', sans-serif;"> <a href="{% url 'productos_all' %}"> Conoce nuestros productos!!</a></h2></center>
+  <center ><h2 style="font-family: 'Russo One', sans-serif;"> <a href="{% url 'productos_all' %}" id="conoce"> Conozca nuestros productos!!</a></h2></center>
 </div>
 <br>
 
 
   <div class="slider">
     <ul class="slides fixed">
-      <li> 
+      <li id="im1"> 
            <img  src="{% static "farmacia/img/carousel_index_3.jpg" %}" alt="">
 
       </li>
 
 
-      <li>
+      <li id="im2">
        <img src="{% static 'farmacia/img/carousel_index_1.jpg' %}" width="100%"  height ="100%" alt="">
         
       </li>
 
 
-      <li>
+      <li id="im3">
         <img src="{% static 'farmacia/img/carousel_index_0.png' %}" width="100%" alt="">
        
       </li>
 
 
-      <li>
+      <li id="im4">
         <img src="{% static 'farmacia/img/carousel_index_2.jpg' %}" width="100%" alt="">
        
       </li>
