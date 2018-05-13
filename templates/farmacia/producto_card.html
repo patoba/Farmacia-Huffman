@@ -29,7 +29,7 @@
               <p>Total: ${{ producto.total }}</p>
             {% endif %}
           {% endif %}
-          <a class="waves-effect waves-light btn">Comprar</a>
+          <a class="waves-effect waves-light btn" href="{% url 'anadir_carrito' Folio=producto.folio %}" >Comprar</a>
         </div>
       </div>
 {% endfor %}

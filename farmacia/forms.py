@@ -7,7 +7,7 @@ from .models import Producto, Factura
 class ProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
-        fields = ['folio', 'nombre','provedor','descripcion','cantidad','clasificacion','precio','descuento','factura']
+        fields = ['folio', 'nombre','provedor','descripcion','cantidad','clasificacion','precio','descuento']
         labels={
             'folio': 'Folio',
             'nombre':'Nombre',
@@ -17,7 +17,6 @@ class ProductoForm(forms.ModelForm):
             'clasificacion': 'Clasificacion',
             'precio':'Precio',
             'descuento':'Descuento',
-            'factura': 'Factura',
         }
 
 class FacturaForm(forms.ModelForm):

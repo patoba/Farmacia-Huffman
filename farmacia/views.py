@@ -2,9 +2,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
+import copy
 
 from farmacia.forms import ProductoForm, UsuarioForm, LoginForm
-from farmacia.models import Producto, Factura,Usuario
+from farmacia.models import Producto, Factura, Usuario, ProductoIndividual
 from django.contrib import messages
 from django.core.mail import EmailMessage
 
@@ -26,11 +27,19 @@ def miCuenta(request):
         contexto={'productos':producto}
         return render(request, 'admin/productos_list.html', contexto)
     facturaza=Factura.objects.filter(usuario=Usuario.objects.get(username=logeo)).order_by('-id')[:1].get()
-    productos=Producto.objects.filter(factura=facturaza)
-    for indice in range(productos.size()):
+    productos=ProductoIndividual.objects.filter(factura=facturaza)
+    for indice in range(productos.count()):
         productos[indice].total=productos[indice].precio*(100-productos[indice].descuento)/100
+        productos[indice].save()
     contexto={'usuarios':usuario,'productos':productos}
     return render(request,'cliente/miCuenta.html',contexto)
+
+def quitar_carrito(request,Id):
+    producto=ProductoIndividual.objects.get(id=Id)
+    if request.method=='POST':
+        producto.delete()
+        return redirect('micuenta')
+    return render(request, 'cliente/producto_eliminar.html', {'producto':producto})
 
 def productos(request):
     if request.method =='POST':
@@ -52,7 +61,7 @@ def productos_all(request):
     return render(request, 'cliente/mensaje.html', {'mensaje': 'Error no haz iniciado sesion'})
 
 def productos(request):
-    return render(request,'farmacia/producto_card.html',{'productos':Producto.objects.filter(factura=None).order_by('folio')})
+    return render(request,'farmacia/producto_card.html',{'productos':Producto.objects.order_by('folio')})
 
 def producto_cambiar(request, folio):
     producto=Producto.objects.get(folio=folio)
@@ -107,6 +116,20 @@ def registro(request):
     else:
         form = UsuarioForm()
     return render(request, 'cliente/crearUsuario.html', {'form': form})
+
+def anadir_carrito(request,Folio):
+    global logeo
+    producto=Producto.objects.get(folio=Folio)
+    print(producto)
+    if producto.cantidad>0 and logeo!=0:
+        facturaza=Factura.objects.filter(usuario=Usuario.objects.get(username=logeo)).order_by('-id')[:1].get()
+        producto2=ProductoIndividual(nombre=producto.nombre,provedor=producto.provedor,
+        clasificacion=producto.clasificacion,precio=producto.precio,
+        descuento=producto.descuento,factura=facturaza,total=producto.total)
+        producto2.save()
+        producto.cantidad=producto.cantidad-1
+        producto.save()
+    return redirect(productos)
 
 
 def sesion(request):

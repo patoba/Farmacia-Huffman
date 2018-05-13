@@ -4,7 +4,7 @@ from django.utils import timezone
 class Usuario(models.Model):
     password = models.CharField(max_length=20)
     username = models.CharField(max_length=20)
-    correo = models.CharField(max_length=25)
+    correo = models.EmailField(max_length=25)
     rfc = models.CharField(max_length=13)
     nombre = models.CharField(max_length=40)
     telefono=models.CharField(max_length=12)
@@ -29,7 +29,17 @@ class Producto(models.Model):
     clasificacion=models.CharField(max_length=40)
     precio = models.FloatField()
     descuento = models.IntegerField(default=0)
-    factura = models.ForeignKey(Factura, null=True, blank=True, on_delete=models.CASCADE)
-    total=models.IntegerField(default=0)
+    total=models.FloatField(default=0)
     def __str__(self):
-        return "%s - %s -> %s" % (self.folio,self.nombre,self.factura)
+        return "%s - %s" % (self.folio,self.nombre)
+
+class ProductoIndividual(models.Model):
+    nombre=models.CharField(max_length= 100)
+    provedor=models.CharField(max_length=40)
+    clasificacion=models.CharField(max_length=40)
+    precio = models.FloatField()
+    descuento = models.IntegerField(default=0)
+    factura = models.ForeignKey(Factura, null=True, blank=True, on_delete=models.CASCADE)
+    total=models.FloatField(default=0)
+    def __str__(self):
+        return "%s - %s -> %s" % (self.id,self.nombre,self.factura)

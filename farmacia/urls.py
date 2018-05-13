@@ -22,6 +22,8 @@ urlpatterns = [
     path('promocion',views.promocion,name="promocion"),
     path('miCuenta',views.miCuenta,name="micuenta"),
     path('productos',views.productos,name="productos"),
+    path('quitar_carrito<Id>',views.quitar_carrito,name="quitar_carrito"),
+    path('anadir_carrito<Folio>',views.anadir_carrito,name="anadir_carrito"),
     re_path(r'^reset/password_reset', password_reset,
         {'template_name': 'registration/password_reset_form.html',
          'email_template_name': 'registration/password_reset_email.html'},

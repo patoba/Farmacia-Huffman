@@ -13,9 +13,7 @@
             <table>
             <thead>
                 <tr>
-                    <td>Folio</td>
                     <td>Nombre</td>
-                    <td>Cantidad</td>
                     <td>Precio</td>
                     <td>Descuento</td>
                     <td>Costo</td>
@@ -25,14 +23,12 @@
             <tbody>
                 {% for producto in productos %}
                     <tr>
-                        <td>{{ producto.folio }}</td>
                         <td>{{ producto.nombre }}</td>
-                        <td>{{ producto.cantidad }}</td>
                         <td>{{ producto.precio }}</td>
                         <td>{{ producto.descuento }}%</td>
                         <td>{{ producto.total }}</td>
                         <td>
-                            <a href="{% url 'producto_eliminar' folio=producto.folio %}">Borrar</a>
+                            <a href="{% url 'quitar_carrito' Id=producto.id %}">Borrar</a>
                         </td>
                     </tr>
                 {% endfor %}
