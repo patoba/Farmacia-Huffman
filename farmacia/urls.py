@@ -28,17 +28,5 @@ urlpatterns = [
     path('generarFactura',views.agregarFactura,name="agregarFactura"),
     path('quitar_carrito<Id>',views.quitar_carrito,name="quitar_carrito"),
     path('anadir_carrito<Folio>',views.anadir_carrito,name="anadir_carrito"),
-    re_path(r'^reset/password_reset', password_reset,
-        {'template_name': 'registration/password_reset_form.html',
-         'email_template_name': 'registration/password_reset_email.html'},
-        name='password_reset'),
-    re_path(r'^password_reset_done', password_reset_done,
-        {'template_name': 'registration/password_reset_done.html'},
-        name='password_reset_done'),
-    re_path(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>.+)/$', password_reset_confirm,
-        {'template_name': 'registration/password_reset_confirm.html'},
-        name='password_reset_confirm'
-        ),
-    re_path(r'^reset/done', password_reset_complete, {'template_name': 'registration/password_reset_complete.html'},
-        name='password_reset_complete'),
+    path('login/recuperar',views.enviarCorreo,name="recuperarContrasena"),
 ]

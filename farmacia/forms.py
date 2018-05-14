@@ -20,6 +20,14 @@ class ProductoForm(forms.ModelForm):
             'descuento':'Descuento',
         }
 
+class RecuperarContrasena(forms.ModelForm):
+    class Meta:
+        model=Usuario
+        fields={'username'}
+        labels={
+            'username':'Nombre de Usuario',
+            }
+
 class FacturaForm(forms.ModelForm):
     class Meta:
         model=Factura

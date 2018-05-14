@@ -2,9 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
-import copy
+from django.core.mail import EmailMessage
 
-from farmacia.forms import ProductoForm, UsuarioForm, LoginForm
+from farmacia.forms import ProductoForm,RecuperarContrasena, UsuarioForm, LoginForm
 from farmacia.models import Producto, Factura, Usuario, ProductoIndividual
 from django.contrib import messages
 from django.core.mail import EmailMessage
@@ -137,7 +137,7 @@ def agregarFactura(request):
     facturaza.save()
     factura=Factura(usuario=Usuario.objects.get(username=logeo))
     factura.save()
-    return redirect('adminInicio')
+    return render(request, 'cliente/productoAnanadido.html', {'factura':facturaza,'usuario':obtenerUsuario()})
 
 def ventas_parciales(request):
     global logeo
@@ -209,6 +209,20 @@ def sesion(request):
     else:
         form = LoginForm()
     return render(request, 'cliente/login.html', {'form': form,'usuario':obtenerUsuario()})
+
+def enviarCorreo(request):
+    global logeo
+    if request.method=='POST':
+        form=RecuperarContrasena(request.POST)
+        if form.is_valid():
+            usuario=Usuario.objects.get(username=form.cleaned_data['username'])
+            email=EmailMessage('Recuperar contraseña','Tu usuario es: '+usuario.username+'\nTu contraseña es: '+usuario.password,to=[usuario.correo])
+            email.send()
+            return redirect('inicio')
+    else:
+        form=RecuperarContrasena()
+    return render(request, 'cliente/recuperarContrasena.html', {'form':form})
+
 
 def administrador(request):
     return HttpResponse("Administrador")

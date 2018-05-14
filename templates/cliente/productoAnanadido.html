@@ -1,0 +1,27 @@
+{% extends 'farmacia/cuerpo.html' %}
+{% block contenido %}
+{% csrf_token %}
+{% if factura %}
+<h3>Resumen de la compra</h3>
+<table>
+<thead>
+    <tr>
+        <td>ID</td>
+        <td>Fecha de Emision</td>
+        <td>Monto</td>
+        <td>Usuario</td>
+    </tr>
+</thead>
+<tbody>
+        <tr>
+            <td>{{ factura.id }}</td>
+            <td>{{ factura.fechaEmision }}</td>
+            <td>{{ factura.monto }}</td>
+            <td>{{ factura.usuario.username }}</td>
+        </tr>
+</tbody>
+</table>
+{% else %}
+<h2>Error al efectuar la compra</h2>
+{% endif %}
+{% endblock %}
