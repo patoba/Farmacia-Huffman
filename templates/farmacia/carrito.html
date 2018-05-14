@@ -4,6 +4,8 @@
 
         </div>
         <div class="col s12 m10">
+             <div class="formulariodiv">
+
           <h3>Carrito de compras</h3>
             <form method="POST">
     {% csrf_token %}
@@ -35,8 +37,12 @@
         {% else %}
         <p>No hay registros</p>
         {% endif %}
-    <a href="{% url 'agregarFactura' %}">Comprar</a>
+        <center>
+            <br><br>
+    <a href="{% url 'agregarFactura' %}" class="contacto">Comprar</a>
+</center>
 </form>
+</div>
         </div>
         <div class="col s0 m1">
 

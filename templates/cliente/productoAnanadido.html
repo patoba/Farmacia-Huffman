@@ -2,6 +2,7 @@
 {% block contenido %}
 {% csrf_token %}
 {% if factura %}
+<div class="formulariodiv">
 <h3>Resumen de la compra</h3>
 <table>
 <thead>
@@ -23,5 +24,7 @@
 </table>
 {% else %}
 <h2>Error al efectuar la compra</h2>
+</div>
 {% endif %}
+
 {% endblock %}

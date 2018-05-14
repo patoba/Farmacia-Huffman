@@ -33,8 +33,10 @@
     </div>
   </nav>
 {% endblock %}
-
-
+{% csrf_token %}
+{% if usuario %}
+{{ usuario }}<a href="{% url 'cerrarSesion' %}">Cerrar Sesion</a>
+{% endif %}
 {%  block contenido %}
     <h3>Este es el contenido</h3>
 {%  endblock %}

@@ -1,6 +1,6 @@
 {% extends 'farmacia/cuerpo.html' %}
 {% block contenido %}
-
+  
 <center>
   <div class="container">
     <div class="row">
@@ -8,12 +8,16 @@
       <div class="col s6">
         
         {% load staticfiles %}
+        <a href="{% url 'registro' %}">
           <img height="320" width="320" src="{% static "farmacia/img/registrate2img.jpg" %}" class="regimg1">
+          </a>
         <h2> <a href="{% url 'registro' %}" class="reg">Registrate</a></h2>
       </div>
       <div class="col s6">
          {% load staticfiles %}
+         <a href="{% url 'sesion' %}">
           <img height="320" width="320" src="{% static "farmacia/img/registrateimg.jpg" %}" class="regimg1">
+          </a>
         <h2><a href="{% url 'sesion' %}"  class="reg">Inicia Sesion</a></h2>
       </div>
     </div>
@@ -40,4 +44,4 @@
     </div>
   </div>
 </footer>
-{%  endblock %}
+{% endblock %}

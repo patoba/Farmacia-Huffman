@@ -3,7 +3,7 @@
 {% block header %}
 <nav class="nav-extended">
   <div class="nav-wrapper blue" >
-  <a href="{% url 'inicio' %}"><img class="responsive-img" src="{% static 'img/logo_provisional.png' %}">   </a>
+  <a href="{% url 'inicio' %}"><img class="responsive-img" src="{% static 'farmacia/img/logo_provisional.png' %}">   </a>
     <a href="{% url 'inicio' %}" class="brand-logo left">Farmacias Hoffman</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li></li>
@@ -13,7 +13,7 @@
       <li><a href="{% url 'promocion' %}">Promociones</a></li>
     </ul>
   </div>
-    <div class="nav-content">
+    <div class="nav-content  green accent-4">
       <ul class="tabs tabs-transparent">
         <li class="tab"><a href="{% url 'adminCarrito' %}">Mi carrito</a></li>
         <li class="tab"><a href="{% url 'productos_all' %}">Modificar Productos</a></li>
@@ -23,5 +23,20 @@
   </nav>
 {% endblock %}
 {% block contenido %}
+{%  block footer %}
+    <footer class="page-footer light blue darken-2" style="position:fixed;bottom:0;left:0;width:100%;">
+  <div class="footer-copyright">
+    <div class="container">
+      <a class="grey-text text-lighten-4 right" href="http://proteco.mx/cursos">
+      © PROTECO - Generación 36
+      </a>
+      Jiménez Vega Alex Fernando -17
+      <br>
+      Barrero Olguin Patricio- 10 <br>
+      Pablo Alberto Lobato Ceballos- 14 <br>
+    </div>
+  </div>
+</footer>
+{%  endblock %}
 
 {% endblock %}

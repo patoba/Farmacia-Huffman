@@ -1,6 +1,8 @@
 {% extends 'admin/miCuenta.html' %}
 {% block contenido %}
 {% if productos %}
+
+<div class="formulariodiv">
     <table>
     <thead>
         <tr>
@@ -35,8 +37,29 @@
         {% endfor %}
     </tbody>
     </table>
+
+
     {% else %}
     <p>No hay registros</p>
     {% endif %}
+    <center>
     <a href="{% url 'productos_agregar' %}">Agregar producto</a>
+</center>
+   </div>
+
+   {%  block footer %}
+    <footer class="page-footer light blue darken-2" style="position:relative;bottom:0;left:0;width:100%;">
+  <div class="footer-copyright">
+    <div class="container">
+      <a class="grey-text text-lighten-4 right" href="http://proteco.mx/cursos">
+      © PROTECO - Generación 36
+      </a>
+      Jiménez Vega Alex Fernando -17
+      <br>
+      Barrero Olguin Patricio- 10 <br>
+      Pablo Alberto Lobato Ceballos- 14 <br>
+    </div>
+  </div>
+</footer>
+{%  endblock %}
 {% endblock %}

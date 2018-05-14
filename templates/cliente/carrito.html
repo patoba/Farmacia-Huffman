@@ -1,6 +1,7 @@
 {% extends 'farmacia/cuerpo.html' %}
 {% block contenido %}
 {% if productos %}
+    <div class="formulariodiv">
     <table>
     <thead>
         <tr>
@@ -33,6 +34,7 @@
         {% endfor %}
     </tbody>
     </table>
+    </div>
     {% else %}
     <p>No hay registros</p>
     {% endif %}
