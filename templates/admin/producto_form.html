@@ -1,8 +1,16 @@
 {% extends 'farmacia/cuerpo.html' %}
 {% block contenido %}
+
+<div class="formulariodiv">
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
+        <center>
         <button type="submit">Guardar</button>
+    	</center>
     </form>
+
+    </div>
+
+    
 {% endblock %}
