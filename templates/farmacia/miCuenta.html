@@ -1,14 +1,43 @@
 {% extends 'farmacia/cuerpo.html' %}
 {% block contenido %}
+
+<center>
   <div class="container">
     <div class="row">
+      <br><br>
       <div class="col s6">
-        <a href="{% url 'registro' %}">Registrate</a>
+        
+        {% load staticfiles %}
+          <img height="320" width="320" src="{% static "farmacia/img/registrate2img.jpg" %}" class="regimg1">
+        <h2> <a href="{% url 'registro' %}" class="reg">Registrate</a></h2>
       </div>
       <div class="col s6">
-        <a href="{% url 'sesion' %}">Inicia Sesion</a>
+         {% load staticfiles %}
+          <img height="320" width="320" src="{% static "farmacia/img/registrateimg.jpg" %}" class="regimg1">
+        <h2><a href="{% url 'sesion' %}"  class="reg">Inicia Sesion</a></h2>
       </div>
     </div>
   </div>
 <br>
+</center>
+
+
+
 {% endblock %}
+
+{%  block footer %}
+    <footer class="page-footer light blue darken-2" style="position:absolute;bottom:0;left:0;width:100%;">
+  <div class="footer-copyright">
+    <div class="container">
+      <a class="grey-text text-lighten-4 right" href="http://proteco.mx/cursos">
+      © PROTECO - Generación 36
+      </a>
+      Jiménez Vega Alex Fernando -17
+      <br>
+      Barrero Olguin Patricio- 10 <br>
+      Pablo Alberto Lobato Ceballos- 14 <br>
+
+    </div>
+  </div>
+</footer>
+{%  endblock %}

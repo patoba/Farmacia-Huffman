@@ -48,6 +48,24 @@ main {
 
 }
 
+.regimg1{
+  border-radius: 20%;
+
+  border-color: black;
+
+}
+
+
+.reg{
+  background-color: #BBCEB4;
+  text-decoration: underline;
+  color: #1612EE;
+  font: sans-serif;
+  border-radius: 5%;
+  padding: 10px;
+}
+
+
 .slides{
       background-size:  100% auto;
 
